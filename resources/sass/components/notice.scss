@@ -1,0 +1,29 @@
+.notice {
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: Helvetica, Arial, Aoyagireisyosimo;
+    }
+    background-color: rgba(135, 61, 36, 0.9);
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+
+    &-inner {
+        background-color: rgba(255, 255, 255, 0.85);
+        margin: .5rem;
+        padding: 3rem;
+        position: relative;
+
+        &:before {
+            border: 0.25rem solid rgba(255, 255, 255, 0.85);
+            border-radius: .5rem;
+            bottom: -.5rem;
+            content: "";
+            left: -.5rem;
+            position: absolute;
+            right: -.5rem;
+            top: -0.5rem;
+        }
+    }
+}

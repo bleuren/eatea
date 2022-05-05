@@ -1,0 +1,115 @@
+
+.mobile-nav {
+    background: #fff;
+    border-radius: 0.625rem;
+    bottom: 0.9375rem;
+    left: 0.9375rem;
+    opacity: 0;
+    overflow-y: auto;
+    padding: 0.625rem 0;
+    position: fixed;
+    right: 0.9375rem;
+    top: 3.4375rem;
+    transition: ease-in-out .2s;
+    visibility: hidden;
+    z-index: 9999;
+
+    .active.drop-down>a:after {
+        content: '\f106'; // angle-up
+    }
+
+    .drop-down>a {
+        padding-right: 2.1875rem; // icon space
+    }
+    .drop-down {
+        >a:after {
+            content: '\f105'; //angle-right
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            padding-left: 0.625rem;
+            position: absolute;
+            right: 0.9375rem;
+        }
+
+        li {
+            padding-left: 1.25rem;
+        }
+
+        ul {
+            display: none;
+            overflow: hidden;
+        }
+    }
+    a {
+        color: #3b434a;
+        font-weight: 500;
+        outline: 0;
+        padding: 0.625rem 1.25rem;
+        display: block;
+        position: relative;
+    }
+
+    .active>a,
+    a:hover,
+    li:hover>a {
+        color: #ffb727;
+        text-decoration: none;
+    }
+
+    * {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.mobile-nav-active {
+    overflow: hidden;
+
+    .mobile-nav {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.mobile-nav-toggle i {
+    color: #fff;
+}
+
+.mobile-nav-overly {
+    background: rgba(36, 41, 46, 0.6);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    transition: ease-in-out .2s;
+    width: 100%;
+    z-index: 9997;
+}
+
+.mobile-nav-title,
+.mobile-nav-toggle {
+    background: 0 0;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    outline: 0 !important;
+    position: fixed;
+    top: 0.9375rem;
+    transition: all .4s;
+    z-index: 9998;
+}
+
+.mobile-nav-title {
+    left: right;
+}
+
+.mobile-nav-toggle {
+    @apply lg:hidden;
+    right: 0.9375rem;
+    text-align: right;
+    padding: 0.0625rem 0.0375rem;
+}

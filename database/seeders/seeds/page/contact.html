@@ -1,0 +1,61 @@
+<section>
+    <div class="container">
+        <div class="section-inner">
+            <h2 class="head-text">店家資訊</h2>
+            <div class="grid md:grid-cols-2">
+                <div>
+                    <p>石伯青草茶<br>E-Mail：eatea.cc@gmail.com<br>Telegram：<a
+                            href="https://t.me/eateacc">https://t.me/eateacc</a><br>FB Messenger：<a
+                            href="http://m.me/eatea.cc">http://m.me/eatea.cc</a><br>LINE官方帳號：<a
+                            href="https://line.me/R/ti/p/%40fvq5510b">@fvq5510b</a><br>FB粉絲專頁:<a
+                            href="https://fb.me/eatea.cc">https://fb.me/eatea.cc</a><br>電話：<a
+                            href="tel:0229310721">(02)2931-0721</a></p>
+                </div>
+                <div class="grid grid-cols-2"> <a href="https://line.me/R/ti/p/%40fvq5510b" target="_blank">
+                        <picture>
+                            <source srcset="../assets/img/webp/contact-line.webp" type="image/webp"><img
+                                alt="LINE：@fvq5510b" src="../assets/img/contact-line.jpg"></source>
+                        </picture>
+                    </a> <a href="https://www.messenger.com/t/eatea.cc" target="_blank">
+                        <picture>
+                            <source srcset="../assets/img/webp/contact-fb.webp" type="image/webp"><img
+                                alt="FB Messenger：石伯青草茶" src="../assets/img/contact-fb.jpg"></source>
+                        </picture>
+                    </a> </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="notice">
+    <div class="container">
+        <div class="notice-inner text-center rounded">
+            <h2 class="head-text">營業時間</h2>
+            <ul class="list-hours mb-5 text-left mx-auto">
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期日 <span
+                        class="ml-auto">Closed</span></li>
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期一 <span
+                        class="ml-auto">5:00 PM to 10:00 PM</span></li>
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期二 <span
+                        class="ml-auto">5:00 PM to 10:00 PM</span></li>
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期三 <span
+                        class="ml-auto">5:00 PM to 10:00 PM</span></li>
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期四 <span
+                        class="ml-auto">5:00 PM to 10:00 PM</span></li>
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期五 <span
+                        class="ml-auto">5:00 PM to 10:00 PM</span></li>
+                <li class="flex border-b border-gray-400 text-gray-400 pb-1 mb-4 italic">星期六 <span
+                        class="ml-auto">5:00 PM to 10:00 PM</span></li>
+            </ul>
+            <p class="address mb-5"><em><strong>116台北市文山區</strong><br>景興路101號(景興路與景華街交叉口)</em></p>
+            <p class="mb-0"><small><em>連絡電話:</em></small><br>(02)2931-0721</p>
+        </div>
+    </div>
+<script>
+    var listHours = document.querySelectorAll('.list-hours li');
+    for (let i = 0; i < listHours.length; i++) {
+        if (i === new Date().getDay()) {
+            listHours[i].classList.remove('border-gray-400', 'text-gray-400');
+            listHours[i].classList.add('font-bold', 'border-black', 'text-black');
+        }
+    }
+</script>

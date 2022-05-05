@@ -1,0 +1,27 @@
+.btn {
+    @apply text-white px-6 py-2 rounded font-medium transition duration-200;
+    a {
+        @apply text-white;
+    }
+    &-primary {
+        @apply bg-blue-500 hover:bg-blue-600;
+    }
+    &-secondary {
+        @apply bg-gray-500 hover:bg-gray-600;
+    }
+    &-success {
+        @apply bg-green-500 hover:bg-green-600;
+    }
+    &-info {
+        @apply bg-green-600 hover:bg-green-700;
+    }
+    &-warning {
+        @apply bg-yellow-500 hover:bg-yellow-600;
+    }
+    &-danger {
+        @apply bg-red-500 hover:bg-red-600;
+    }
+    &-dark {
+        @apply bg-gray-700 hover:bg-gray-800;
+    }
+}

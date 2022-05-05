@@ -1,0 +1,19 @@
+.carousel {
+    @apply relative;
+    &-control {
+        @apply absolute inset-0 flex;
+        &-prev {
+            @apply flex items-center justify-start w-1/2;
+        }
+        &-next {
+            @apply  flex items-center justify-end w-1/2;
+        }
+    }
+    .carousel-indicators {
+        @apply absolute w-full flex items-center justify-center px-4;
+        bottom: 0.625rem;
+        button {
+            @apply flex-1 h-1 mt-4 mx-2 mb-0 overflow-hidden rounded-none transition-colors duration-500 ease-out;
+        }
+    }
+}

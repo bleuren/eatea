@@ -1,0 +1,78 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+@layer base {
+    @font-face {
+        font-display: swap;
+        font-family: Aoyagireisyosimo;
+        font-style: normal;
+        font-weight: 400;
+        src: url(/assets/font/heading-webfont.woff2) format("woff2"), url(/assets/font/heading-webfont.woff) format("woff"), url(/assets/font/heading-webfont.ttf) format("truetype");
+    }
+       
+    body {
+        transition: transform 500ms ease-in-out;
+        background-attachment: fixed;
+        background-image: url(/assets/img/bg6.jpg);
+        background-position: center;
+        background-repeat: repeat;
+        display: flex;
+        flex-direction: column;
+        font-family: "Open Sans", sans-serif;
+        min-height: 100vh;
+        line-height: 1.75;
+    }
+
+
+    a {
+        @apply text-yellow-400;
+    }
+
+
+    a:hover {
+        color: #ffc85a;
+        text-decoration: none;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply leading-tight;
+        font-weight: 500;
+        color: inherit;
+    }
+
+    h1 {
+        @apply text-6xl lg:text-7xl;
+    }
+
+    h2 {
+        @apply text-4xl lg:text-5xl;
+    }
+
+    h3 {
+        @apply text-3xl lg:text-4xl;
+    }
+
+    ul {
+        -webkit-padding-start: 1.25rem;
+        padding-inline-start: 1.25rem;
+        margin-bottom: 1rem;
+        list-style-type: disc;
+    }
+
+    .head-text {
+        font-family: Aoyagireisyosimo, noto sans tc, Helvetica, Arial, lihei pro, microsoft jhenghei, sans-serif;
+    }
+    @media (max-width: 767px) {
+        body {
+            background-color: #fff; //#e4e8e9
+            background-image:none;
+        }
+    }
+}

@@ -1,0 +1,87 @@
+/*--------------------------------------------------------------
+# Menu
+--------------------------------------------------------------*/
+.menu {
+    #menu-flters {
+        border-radius: 3.125rem;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+
+        li {
+            border: 0.125rem solid #ffb03b;
+            border-radius: 3.125rem;
+            color: #444;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 0.1875rem 0.625rem;
+            padding: 0.5rem 1rem 0.625rem;
+            transition: all ease-in-out 0.3s;
+
+            &:hover {
+                background: #ffb03b;
+                color: #fff;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.filter-active {
+                background: #ffb03b;
+                color: #fff;
+            }
+        }
+    }
+
+    .menu-content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.875rem;
+        overflow: hidden;
+        position: relative;
+
+        a {
+            color: #ff9b08;
+            font-weight: 700;
+            padding-right: 0.625rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        span {
+            background-color: #fff;
+            font-weight: 600;
+            padding: 0 0.625rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        &::after {
+            color: #dad8d4;
+            content: "......................................................................"
+            "...................................................................."
+            "...................................................................."
+            "......................................................................"
+            "...................................................................."
+            "....................................................................";
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            left: 1.25rem;
+            position: absolute;
+            right: 0;
+            top: -0.25rem;
+            z-index: 1;
+        }
+    }
+
+    .menu-ingredients {
+        color: #948c81;
+        font-family: "Comic Neue", sans-serif;
+        font-size: 0.875rem;
+        font-style: italic;
+    }
+}

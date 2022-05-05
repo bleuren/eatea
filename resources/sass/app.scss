@@ -1,0 +1,55 @@
+@import 'tailwindcss/base';
+@import 'base';
+@import 'tailwindcss/components';
+@import 'components';
+@import 'tailwindcss/utilities';
+@import 'flatpickr/dist/flatpickr.css';
+
+[x-cloak] {
+    display: none !important;
+}
+
+/*--------------------------------------------------------------
+# Bootstrap Conver
+--------------------------------------------------------------*/
+.container {
+    @apply mx-auto;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+#header {
+    @apply fixed w-screen flex justify-center items-center;
+}
+
+#header {
+    @apply h-16;
+    transition: all .5s;
+    z-index: 997;
+
+    &.header-transparent {
+        background: 0 0;
+    }
+
+    &.header-scrolled {
+        background: rgba(25, 28, 31, 0.8);
+    }
+}
+
+
+#footer {
+    -webkit-backdrop-filter: blur(0.1875rem);
+    backdrop-filter: blur(0.1875rem);
+    background-color: rgba(25, 28, 31, 0.8);
+    color: rgba(255, 255, 255, 0.3);
+    a {
+        color: rgba(255, 255, 255, 0.2) !important;
+
+        &:hover {
+            color: #fff !important;
+        }
+    }
+}
+

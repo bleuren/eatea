@@ -1,0 +1,13 @@
+{
+    "SUBSCRIBE": "訂閱",
+    "PICKUP": "到店取貨",
+    "DELIVERY": "宅配",
+    "PENDING": "待確認",
+    "CHECKED": "已確認",
+    "PAID": "通知已付款",
+    "ARRIVED": "送達",
+    "deposit": "存入",
+    "withdraw": "轉出",
+    "commission": "傭金",
+    "shopping": "購物"
+}
