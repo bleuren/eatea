@@ -277,19 +277,16 @@ class OrderService implements IOrderService
             }
         }
 
-        if (count($subscribe['date']) >= 2) {
-            $date_start = date_create(reset($subscribe['date']));
-            $date_end   = date_create(end($subscribe['date']));
-            $interval   = date_diff($date_start, $date_end);
-            $rate       = round($subscribe['qty'] / ($interval->days + 1), 2);
-            if ($distance > 6000) {
+        if ($subscribe['qty'] != 0) {
+            if (count($subscribe['date']) < 10 && $distance > 6000) {
                 $fee = 260 * count($subscribe['date']);
-            } else {
-                if ($rate < 0.5) {
-                    $fee = round($distance / 5 * (1 - $rate));
-                }
+            } elseif ((4000 <= $distance) && ($distance <= 5999)) {
+                $fee += 120;
+            } elseif ((1000 <= $distance) && ($distance <= 3999)) {
+                $fee += 60;
             }
         }
+
         return $fee;
     }
 

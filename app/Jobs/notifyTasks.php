@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Contracts\IOrderService;
+use App\Models\Map;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -34,8 +35,9 @@ class notifyTasks implements ShouldQueue
         $orderItemSubs = $orderService->getTasks('today');
         $message       = '';
         foreach ($orderItemSubs as $orderItemSub) {
+            $map = Map::find($orderItemSub->orderItem->order->map_id);
             $message .= "\n";
-            $message .= "訂單{$orderItemSub->orderItem->order->id}: 送 {$orderItemSub->orderItem->product->name} * {$orderItemSub->qty} 到 {$orderItemSub->orderItem->order->address} 給 {$orderItemSub->orderItem->order->name}";
+            $message .= "訂單{$orderItemSub->orderItem->order->id}: 送 {$orderItemSub->orderItem->product->name} * {$orderItemSub->qty} 到 {$map->city}{$map->district}{$map->road}{$orderItemSub->orderItem->order->address} 給 {$orderItemSub->orderItem->order->name}";
         }
 
         return Line::send($message);
