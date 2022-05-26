@@ -21,7 +21,7 @@ class UserService implements IUserService
 
     public function find($id)
     {
-        return $this->userRepo->get($id);
+        return $this->userRepo->find($id);
     }
 
     public function findReferrer($id)

@@ -21,11 +21,13 @@
                 <td class="w-1/4">收件人</td>
                 <td>{{ $order->name }}</td>
             </tr>
+            @if(isset($order->map))
             <tr>
                 <td class="w-1/4">地址</td>
                 <td>{{ $order->map->city }}{{ $order->map->district }}{{ $order->map->road }}{{ $order->address }}
                 </td>
             </tr>
+            @endif
             <tr>
                 <td class="w-1/4">手機</td>
                 <td>{{ $order->mobile }}</td>

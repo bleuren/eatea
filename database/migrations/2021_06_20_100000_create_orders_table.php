@@ -20,10 +20,11 @@ class CreateOrdersTable extends Migration
                 ->onDelete('cascade');
             $table->string('name');
             $table->foreignId('map_id')
+                ->nullable()
                 ->constrained()
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->text('mobile');
             $table->json('payment')->default(json_encode(['method' => null, 'id' => null]));
             $table->text('message')->nullable();

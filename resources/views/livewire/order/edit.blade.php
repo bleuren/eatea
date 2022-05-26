@@ -12,11 +12,13 @@
                     <td class="w-1/4">收件人</td>
                     <td><input class="w-full rounded-md" name="name" type="text" value="{{ $order->name }}" /></td>
                 </tr>
+                @if(isset($order->map))
                 <tr>
                     <td class="w-1/4">地址</td>
                     <td>@livewire('order.address-drop', ['map_id' => $order->map_id]) 
                         <input class="w-full rounded-md md:mt-4" name="address" type="text" value="{{ $order->address }}" /></td>
                 </tr>
+                @endif
                 <tr>
                     <td class="w-1/4">手機</td>
                     <td><input class="w-full rounded-md" name="mobile" type="text" value="{{ $order->mobile }}" /></td>

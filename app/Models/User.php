@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\Order;
+use Bavix\Wallet\Interfaces\Confirmable;
 use Bavix\Wallet\Interfaces\Wallet;
+use Bavix\Wallet\Traits\CanConfirm;
 use Bavix\Wallet\Traits\HasWallet;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,7 +15,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Questocat\Referral\Traits\UserReferral;
 
-class User extends \TCG\Voyager\Models\User implements Wallet
+class User extends \TCG\Voyager\Models\User implements Wallet, Confirmable
 {
     use HasApiTokens;
     use HasFactory;
@@ -23,6 +25,7 @@ class User extends \TCG\Voyager\Models\User implements Wallet
     use SoftDeletes;
     use UserReferral;
     use HasWallet;
+    use CanConfirm;
 
     /**
      * The attributes that are mass assignable.

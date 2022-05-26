@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OpayPaymentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
@@ -27,13 +28,13 @@ Route::group(['prefix' => 'login/{provider}'], function () {
     Route::get('/', [LoginController::class, 'redirectToProvider'])->name('social.login');
     Route::get('/callback', [LoginController::class, 'handleProviderCallback'])->name('social.callback');
 });
-
+Route::post('/receive', [OpayPaymentController::class, 'receive']);
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
     Route::resource('order', OrderController::class, ['only' => ['index', 'show', 'store']]);
     Route::get('/refer', [UserController::class, 'refs'])->name('user.refs');
     Route::get('/wallet', [UserController::class, 'wallet'])->name('user.wallet');
-    
+    Route::post('/pay', [OpayPaymentController::class, 'pay']);
     Route::patch('/order/update/payment/{order}', [OrderController::class, 'patchPayment'])->name('order.update.payment');
 
     Route::middleware(['role:admin'])->group(function () {

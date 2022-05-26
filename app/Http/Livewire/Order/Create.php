@@ -14,6 +14,8 @@ class Create extends Component
 {
     public $cart;
 
+    public $requireAddress;
+
     public $fee = 0;
 
     public $distance;
@@ -55,22 +57,24 @@ class Create extends Component
         if ($this->useLastInfo && Auth::check()) {
             $order = Order::where(['user_id' => Auth::user()->id])->latest()->first();
             if ($order) {
-                $this->name      = $order->name;
-                $this->mobile    = $order->mobile;
-                $this->address   = $order->address;
-                $map             = Map::find($order->map_id);
-                $this->city      = $map->city;
-                $this->district  = $map->district;
-                $this->map_id    = $order->map_id;
-                $this->districts = Map::where([
-                    'city' => $this->city,
-                ])->distinct()->get('district')->flatten();
-                $this->roads = Map::where([
-                    'city'     => $this->city,
-                    'district' => $this->district,
-                ])->get(['id', 'road'])->unique();
-                $this->distance = $map->distance;
-                $this->updateFee($cartService, $orderService);
+                $this->name    = $order->name;
+                $this->mobile  = $order->mobile;
+                $this->address = $order->address;
+                if ($order->map_id) {
+                    $map             = Map::find($order->map_id);
+                    $this->city      = $map->city;
+                    $this->district  = $map->district;
+                    $this->map_id    = $order->map_id;
+                    $this->districts = Map::where([
+                        'city' => $this->city,
+                    ])->distinct()->get('district')->flatten();
+                    $this->roads = Map::where([
+                        'city'     => $this->city,
+                        'district' => $this->district,
+                    ])->get(['id', 'road'])->unique();
+                    $this->distance = $map->distance;
+                    $this->updateFee($cartService, $orderService);
+                }
             }
         } else {
             $this->reset([
@@ -127,7 +131,11 @@ class Create extends Component
 
     public function render(ICartService $cartService)
     {
-        $this->cart   = $cartService->index();
+        $this->cart           = $cartService->index();
+        $this->requireAddress = $this->cart->search(function ($cartItem, $rowId) {
+            return $cartItem->options['mode'] !== 'PICKUP';
+        });
+
         $maxId        = DB::raw('MAX(id)');
         $this->cities = Map::groupBy('city')->orderBy($maxId)->get('city');
         return view('livewire.order.create');

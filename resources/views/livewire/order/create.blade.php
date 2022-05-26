@@ -1,7 +1,7 @@
 <div>
     @auth
         <div class="personal w-full border-t border-gray-400 pt-4">
-            <form action="{{ route('order.store') }}" method="post">
+            <form action="{{ route('order.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="mode" value="SUBSCRIBE" />
                 <h2 class="text-gray-900">收件人資訊</h2>
@@ -17,6 +17,7 @@
                             value='{{ old('mobile') }}' placeholder='0900-000-000' required>
                     </div>
                 </div>
+                @if($requireAddress)
                 <div class='px-3 mb-6'>
                     <label class='block font-bold mb-2'>收件地址</label>
                     <div class="md:flex">
@@ -44,7 +45,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input required type="text" name="address" wire:model="address" class="md:flex-grow block w-full rounded-md">
+                        <input type="text" name="address" wire:model="address" class="md:flex-grow block w-full rounded-md">
                     </div>
                     <div wire:loading.delay wire:target="getDistance">
                         <i class="fas fa-spinner animate-spin"></i> 計算運費中...
@@ -53,6 +54,7 @@
                         <span>{{ $info }}</span>
                     </div>
                 </div>
+                @endif
                 <div class='w-full md:w-full px-3 mb-6'>
                     <label class='block font-bold mb-2'>附加訊息</label>
                     <textarea name="message"

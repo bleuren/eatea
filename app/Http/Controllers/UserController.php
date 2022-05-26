@@ -21,8 +21,8 @@ class UserController extends Controller
     public function wallet()
     {
         $user         = Auth::user();
-        $transactions = $user->wallet->transactions()->orderBy('created_at')->get();
-
+        $transactions = $user->wallet->transactions()->where('confirmed', true)->orderBy('created_at')->get();
+        
         $wallet = [
             'balance'      => $user->balance,
             'transactions' => $transactions,

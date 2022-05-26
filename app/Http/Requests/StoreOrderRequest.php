@@ -31,7 +31,7 @@ class StoreOrderRequest extends FormRequest
             ],
             'mobile' => 'required|regex:/^09[0-9]{2}-[0-9]{3}-[0-9]{3}$/',
             'map_id' => [
-                'required',
+                // 'required',
                 'integer',
                 'exists:maps,id',
             ],

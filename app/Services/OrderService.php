@@ -66,15 +66,21 @@ class OrderService implements IOrderService
 
     public function create($request)
     {
+
         try {
             $request['user_id'] = Auth::id();
             $cart               = $this->cartRepo->index();
-            $distance           = $this->getDistance($request['map_id']);
-            if (!$distance) {
-                abort(403, __('距離計算錯誤！可能在服務區外'));
+            $requireAddress     = $cart->search(function ($cartItem, $rowId) {
+                return $cartItem->options['mode'] !== 'PICKUP';
+            });
+            if ($requireAddress) {
+                $distance = $this->getDistance($request['map_id']);
+                if (!$distance) {
+                    abort(403, __('距離計算錯誤！可能在服務區外'));
+                }
+                $request['fee'] = $this->calcFee($cart, $distance);
             }
-            $request['fee'] = $this->calcFee($cart, $distance);
-            $order          = $this->orderRepo->create($request);
+            $order = $this->orderRepo->create($request);
             foreach ($cart as $item) {
                 $orderItem = $this->orderItemRepo->create($order, $item);
                 if ($orderItem->mode === 'SUBSCRIBE') {

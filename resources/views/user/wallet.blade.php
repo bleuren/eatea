@@ -48,7 +48,15 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="4" class="text-right">總計: {{ number_format($wallet['balance']) }}</td>
+                <td colspan="3">
+                    <form method="POST" action="/pay">
+                        @csrf
+                        <input type="number" value="" name="amount">
+                        <input class="w-full rounded-md" type="hidden" value="{{ config('app.url') }}" name="ClintBackURL">
+                        <button class="btn btn-danger" type="submit">存款</button>
+                    </form>
+                </td>
+                <td class="text-right">總計: {{ number_format($wallet['balance']) }}</td>
             </tr>
         </tbody>
     </table>
