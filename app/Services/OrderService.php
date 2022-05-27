@@ -91,7 +91,7 @@ class OrderService implements IOrderService
                 }
             }
             if ($order) {
-                $message = '有新訂單: ' . url('/') . '/orders/' . $order->id;
+                $message = '有新訂單: ' . url('/') . '/order/' . $order->id;
                 Line::send($message);
                 $this->cartRepo->truncate();
             }
