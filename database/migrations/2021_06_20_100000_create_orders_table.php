@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
                 ->onUpdate('cascade');
             $table->text('address')->nullable();
             $table->text('mobile');
-            $table->json('payment')->default(json_encode(['method' => null, 'id' => null]));
+            $table->json('payment');
             $table->text('message')->nullable();
             $table->integer('fee')->default(0);
             $table->enum('status', ['PENDING', 'CHECKED', 'PAID', 'ARRIVED'])->default('PENDING');

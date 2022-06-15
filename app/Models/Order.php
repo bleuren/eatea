@@ -36,7 +36,11 @@ class Order extends Model
     ];
 
     protected $casts = [
-        'payment' => 'array',
+        'payment' => 'json',
+    ];
+
+    protected $attributes = [
+        'payment' => '{ "method": null, "id": null }',
     ];
 
     public function orderItems()

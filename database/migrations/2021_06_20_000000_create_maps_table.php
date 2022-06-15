@@ -15,7 +15,7 @@ class CreateMapsTable extends Migration
     {
         if (!Schema::hasTable('maps')) {
             Schema::create('maps', function (Blueprint $table) {
-                $table->integer('id')->primary();
+                $table->id();
                 $table->integer('postal');
                 $table->string('city');
                 $table->string('district');

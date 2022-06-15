@@ -8,6 +8,7 @@ use App\Models\OrderItemSub;
 use App\Models\Product;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class OrdersTableSeeder extends Seeder
 {
@@ -18,7 +19,9 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Order::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         Order::factory(10)->create()->each(function ($order) {
             $counts   = Product::all()->count();
